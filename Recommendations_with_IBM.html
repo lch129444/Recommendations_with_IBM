@@ -15790,7 +15790,8 @@ Or, if we could ask the user's preference, we could recommend based upon knowled
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As the accuracy of training set going up, the accuracy of testing going down.  It seems a typical overfitting situation.  Also, since we tested the overlapped users between the training set and the testing set before we fit the model, we know that the overlapped set is so limited.  It was actually the time we should stop and try something new.  I am thinking about do some synthetic data to balance the training and testing sets, like add a SMOTE step.  Or, we could combine different recommendation methods instead of just using one.  And we drop the duplicates and provide a list.  We could do A/B test to adjust how do we "weight" different methods when doing so.</p>
+<p>As the accuracy of training set going up, the accuracy of testing going down.  It seems a typical overfitting situation.  One explanation could be that with increasing latent features caused the overfitting issue. We would try to keep fewer latent features.</p>
+<p>Also, since we tested the overlapped users between the training set and the testing set before we fit the model, we know that the overlapped set is so limited.  So, we should not build out recommendation solely on SVD.  we can generate recommendation from all the above tried methods, removing duplicates and give some ranks to it. We can perform A/B testing and test different combinations of recommendations.  For example, We could carry out A/B testing (online testing) to get feedback from users while testing 2 models</p>
 
 </div>
 </div>
@@ -15813,7 +15814,7 @@ Or, if we could ask the user's preference, we could recommend based upon knowled
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[121]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
@@ -15821,6 +15822,26 @@ Or, if we could ask the user's preference, we could recommend based upon knowled
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[121]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
